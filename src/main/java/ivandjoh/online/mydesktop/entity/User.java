@@ -18,7 +18,8 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String fullName;
+    private String firstName;
+    private String lastName;
     private String email;
 
     @Override

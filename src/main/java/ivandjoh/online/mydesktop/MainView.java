@@ -1,26 +1,26 @@
 package ivandjoh.online.mydesktop;
 
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.H3;
-import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import ivandjoh.online.mydesktop.entity.User;
+import ivandjoh.online.mydesktop.repository.UserRepository;
+import ivandjoh.online.mydesktop.utils.FormUtils;
 
 @Route("")
 public class MainView extends VerticalLayout {
 
-    public MainView() {
-        var button = new Button("Submit");
-        var textField = new TextField();
+    private TextField firstName = new TextField("First Name");
+    private TextField lastName = new TextField("Last Name");
+    private TextField email = new TextField("Email");
+    private Grid<User> grid = new Grid<>(User.class);
+    FormUtils formUtils = new FormUtils();
 
-        add(new H3("My Desktop Application"));
-        add(new HorizontalLayout(textField, button));
+    public MainView(UserRepository userRepository) {
 
-        button.addClickListener(e -> {
-            add(new Paragraph("Hello, " + textField.getValue()));
-            textField.clear();
-        });
+        grid.setColumns("firstName", "lastName", "email");
+        add(formUtils.getForm(firstName, lastName, email), grid);
     }
+
 }
