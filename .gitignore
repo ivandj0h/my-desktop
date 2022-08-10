@@ -4,11 +4,13 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.mvn
-mvnw.cmd
+.mvn/wrapper
 mvnw
-mvnw.bat
+mvnw.cmd
+.mvn
 
+### Node Modules
+node_modules
 
 ### STS ###
 .apt_generated
